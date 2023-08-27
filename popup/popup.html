@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="popup.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <main>
+      <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+        <symbol id="open-eye1" viewBox="0 0 16 16">
+          <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+          <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+        </symbol>
+        <symbol id="closed-eye1" viewBox="0 0 16 16">
+          <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+          <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+        </symbol>
+      </svg>  
+
+      <div class="container my-5">
+        <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
+          <svg class="bi mt-1 mb-3" width="48" height="48" id="open-eye"><use xlink:href="#open-eye1"/></svg>
+          <svg class="bi mt-1 mb-3" width="48" height="48" id="closed-eye"><use xlink:href="#closed-eye1"/></svg>
+
+          <h1 class="text-body-emphasis" id="inactive-heading">Welcome to Shuteye</h1>
+          <h1 class="text-body-emphasis" id="active-heading">Shuteye Started</h1>
+
+          <p class="col-lg-6 mx-auto mb-4 pt-1" id="inactive-desc">
+            A simple extension that reminds you to shut your eyes periodically to relax them.
+          </p>
+          <p class="col-lg-6 mx-auto mb-4" id="active-desc">
+            Your next reminder is in :
+          </p>  
+          <p class="col-lg-6 mx-auto mb-4" id="remind-every-label">
+            Remind me every:
+          </p>  
+          <div class="btn-group btn-group-lg pb-5" role="group" aria-label="Large button group" id="interval-selector-button-group">
+            <button type="button" class="btn btn-outline-primary" value="5" id="five-mins-button">5 mins</button>
+            <button type="button" class="btn btn-outline-primary" value="10" id="ten-mins-button">10 mins</button>
+            <button type="button" class="btn btn-outline-primary" value="20" id="twenty-mins-button">20 mins</button>
+          </div>
+          <button class="btn btn-primary px-5 mx-5" type="button" id="start-button">
+            Start Shuteye
+          </button>
+          <button class="btn btn-primary px-5 mx-5" type="button" id="stop-button">
+            Stop Shuteye
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script src="popup.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>

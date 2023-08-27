@@ -1,0 +1,25 @@
+{
+    "name": "ShutEye",
+    "description": "A chrome extension that reminds you to take care of your eyes periodically to reduce eye fatigue and stress.",
+    "version": "1.1",
+    "manifest_version": 3,
+    "permissions": ["notifications","storage","alarms"],
+    "host_permissions": [],
+    "action": {
+      "default_title": "ShutEye",
+      "default_icon": "assets/shuteyebasic.png",
+      "default_popup": "popup/popup.html"
+    },
+    "icons": {
+      "16": "assets/shuteyebasic.png",
+      "32": "assets/shuteyebasic.png",
+      "48": "assets/shuteyebasic.png",
+      "128": "assets/shuteyebasic.png"
+    }    
+    ,
+    "offline_enabled": true,
+    "background": {
+      "service_worker": "background.js"
+    }
+
+}
