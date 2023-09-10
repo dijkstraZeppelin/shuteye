@@ -21,8 +21,8 @@ function clearAlarm() {
   window.close();
 }
 
-function showTimesUsed(numTimesUsed) {
-  document.getElementById('usage-history-banner').innerText = `You have used the 20-20-20 rule ${numTimesUsed} times so far. Way to go!`
+function showTimesUsedToday(numTimesUsedToday) {
+  document.getElementById('usage-history-banner').innerText = `You have used the 20-20-20 rule ${numTimesUsedToday} times so far. Way to go!`
 }
 
 function setMinsValue(minsValue) {
@@ -36,10 +36,10 @@ document.getElementById('cancel-button').addEventListener('click', clearAlarm);
 document.addEventListener('DOMContentLoaded', () => load());
 
 async function load() {
-  const item = await chrome.storage.sync.get(['numTimesUsed']);
+  const item = await chrome.storage.sync.get(['numTimesUsedToday']);
   const itemMins = await chrome.storage.sync.get(['minutes']);
-
-  showTimesUsed(item.numTimesUsed)
-  setMinsValue(item.minutes)
+  console.log(itemMins.minutes,"is time in mins")
+  showTimesUsedToday(item.numTimesUsedToday);
+  setMinsValue(itemMins.minutes);
 }
 

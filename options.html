@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shuteye Settings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <div class="container my-6">
+      <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-4">
+        <h1 class="text-body-emphasis" id="inactive-heading">Settings</h1>
+        <p class="col-lg-5 pt-3" id="remind-every-label">
+          Set your notification preferences here. You can choose to be notified via a new tab, or a 
+          popup notification.
+        </p>  
+        <div class="btn-group pt-3" role="group" aria-label="Basic radio toggle button group" id="notification-type-edit-group">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="tab">
+          <label class="btn btn-outline-primary" for="btnradio1">Notify via Tab</label>
+        
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" value="popup" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btnradio2">Notify via Popup</label>
+
+        </div>
+        <p class="col-lg-5 pt-3" id="remind-every-label">
+          Set your timer preferences here. For example, type in '30' to set timer as 30 minutes.
+          You can go to a maximum of 30 minutes.
+        </p>  
+        <div class="input-group pt-2" id="interval-edit-group">
+          <input type="text" aria-label="x min" class="form-control" id="first-option-input">
+          <input type="text" aria-label="y min" class="form-control"  id="second-option-input">
+          <input type="text" aria-label="z min" class="form-control"  id="third-option-input">
+        </div>
+        <div class="pt-3 mx-5">
+          <button class="btn btn-primary" type="button" id="save-button">
+            Save
+          </button>
+        </div>
+       
+      </div>
+      
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>
