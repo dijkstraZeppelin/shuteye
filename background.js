@@ -24,6 +24,7 @@ chrome.alarms.onAlarm.addListener(async(alarm) => {
             iconUrl: '../assets/shuteyebasic.png',
             title: 'Hi there! Great work so far!',
             message: "This is a gentle reminder to rest your eyes just for a while!",
+            buttons: [{ title: 'Restart Shuteye' },{ title: 'Cancel Shuteye' }],
             priority: 0
           });
         }
@@ -56,3 +57,26 @@ chrome.alarms.onAlarm.addListener(async(alarm) => {
   chrome.storage.sync.set({'minutesLeft': 0});
   chrome.alarms.clearAll();
 }
+
+chrome.notifications.onButtonClicked.addListener(async (notificationId,buttonIndex) => {
+  console.log('button index is',buttonIndex);
+  const item = await chrome.storage.sync.get(['minutes']);
+  const minutes = item.minutes;
+  console.log('minutes is',minutes);
+
+  if (buttonIndex == 0) {
+    chrome.action.setBadgeText({ text: `${minutes.toString()}m` });
+    // Create main alarm
+    chrome.alarms.create('main-alarm', {
+        delayInMinutes: minutes,
+      });
+    // Create secondary counter alarm
+    chrome.alarms.create('time-elapsed-alarm', {
+      periodInMinutes: 1
+    });
+    chrome.storage.sync.set({ 'minutes': minutes,  'minutesLeft': minutes});
+    
+  } else if (buttonIndex == 1){
+    clearAlarm() ;
+  }
+});
