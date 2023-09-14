@@ -8,8 +8,29 @@ async function saveOptions() {
     const secondOptionInputInt = parseInt(secondOptionInput);
     const thirdOptionInputInt = parseInt(thirdOptionInput);
 
-    
+    if (
+        (isNaN(firstOptionInputInt)&&firstOptionInput!="")
+        || (isNaN(secondOptionInputInt)&&secondOptionInput!="")
+        || (isNaN(thirdOptionInputInt)&&thirdOptionInput!="")
+        ) {
+            document.getElementById('error-message').classList.add("alert"); 
+            document.getElementById('error-message').classList.add("alert-danger"); 
+        document.getElementById('error-message').innerHTML = "Please enter valid minutes!";
+        return;
+    }
 
+    if (firstOptionInputInt > 30 || firstOptionInputInt < 1 || secondOptionInputInt > 30 
+        || secondOptionInputInt < 1 || thirdOptionInputInt > 30 || thirdOptionInputInt < 1) {
+        document.getElementById('error-message').innerHTML = "Please enter between 1 and 30 minutes!";
+        document.getElementById('error-message').classList.add("alert"); 
+        document.getElementById('error-message').classList.add("alert-danger"); 
+        return;
+    }
+
+    document.getElementById('error-message').innerHTML = "";
+    document.getElementById('error-message').classList.remove("alert"); 
+    document.getElementById('error-message').classList.remove("alert"); 
+    
     const fo = await chrome.storage.sync.get(['firstOption']);
     const so = await chrome.storage.sync.get(['secondOption']);
     const to = await chrome.storage.sync.get(['thirdOption']);
@@ -40,6 +61,8 @@ async function saveOptions() {
             }); 
         }
     }  
+    document.getElementById('save-button').innerHTML = "Saved!";
+    document.getElementById('save-button').classList.add("btn-success");
 };
   
   document.getElementById('save-button').addEventListener('click', saveOptions);

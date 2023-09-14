@@ -3,14 +3,20 @@ chrome.alarms.onAlarm.addListener(async(alarm) => {
     if (alarm.name === 'main-alarm') {
         const item = await chrome.storage.sync.get(['numTimesUsedToday']);
         const itemToday = await chrome.storage.sync.get(['today']);
-        let newToday = new Date().toLocaleDateString()
-        if (newToday!=itemToday.today){
+        let newToday = new Date().toLocaleDateString();
+        let currentToday = itemToday.today;
+        // console.log(newToday,currentToday);
+        if (newToday!=currentToday){
           //new day
           numTimesUsedToday = 1;
+          currentToday = newToday;
         } else {
           numTimesUsedToday = item.numTimesUsedToday + 1;
         }
-        chrome.storage.sync.set({'numTimesUsedToday': numTimesUsedToday});
+        chrome.storage.sync.set({
+          'numTimesUsedToday': numTimesUsedToday,
+          'today': currentToday
+        });
         clearAlarm();
         // if starte here 
         const nt = await chrome.storage.sync.get(['notificationType']);
